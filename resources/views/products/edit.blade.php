@@ -13,7 +13,7 @@
                     {!! Former::open_vertical(action('ProductsController@update', ['id' => $product->id])) !!}
                     {!! Former::hidden('_method', 'put') !!}
                     {{ Former::populate($product) }}
-                    {!! Former::number('price')->required() !!}
+                    {!! Former::number('price')->required()->step('0.01') !!}
                     @include('products.form')
                 </div>
             </div>
