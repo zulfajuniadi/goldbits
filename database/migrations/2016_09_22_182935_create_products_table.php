@@ -17,8 +17,14 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->decimal('price', 10, 2);
+            $table->string('url');
+            $table->date('expiry_date');
+            $table->text('pricing_reason', 10, 2)->nullable();
+            $table->integer('quantity')->default(1000);
+            $table->decimal('weekly_sales', 10, 2)->default(100);
+            $table->decimal('price', 10, 2)->nullable();
             $table->decimal('low_price', 10, 2);
+            $table->decimal('mid_price', 10, 2);
             $table->decimal('high_price', 10, 2);
             $table->timestamps();
         });
