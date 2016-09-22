@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Observers\UserObserver;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -27,9 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function boot()
-    {
-        User::observe(UserObserver::class);
-    }
 }
