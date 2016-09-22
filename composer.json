@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "thujohn/twitter": "^2.2",
-        "fabpot/goutte": "^3.1"
+        "fabpot/goutte": "^3.1",
+        "anahkiasen/former": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
