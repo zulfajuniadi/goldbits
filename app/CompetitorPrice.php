@@ -15,6 +15,11 @@ class CompetitorPrice extends Model
         'price',
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
     public static function createFromScraper($priceDetails = [])
     {
         foreach ($priceDetails as $details) {
