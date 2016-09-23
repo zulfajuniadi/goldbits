@@ -15,10 +15,6 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\GetPriceCommand::class,
         Commands\GetWeatherCommand::class,
-        Commands\PostFacebookUpCommand::class,
-        Commands\PostFacebookDownCommand::class,
-        Commands\PostTwitterUpcommand::class,
-        Commands\PostTwitterDowncommand::class,
     ];
 
     /**
