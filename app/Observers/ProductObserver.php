@@ -12,4 +12,11 @@ class ProductObserver
         $product->code = md5(microtime());
     }
 
+    public function updated(Product $product)
+    {
+        if (!in_array('price', array_keys($product->getDirty()))) {
+            $product->adjust();
+        }
+    }
+
 }

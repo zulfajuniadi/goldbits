@@ -27,6 +27,14 @@ class Product extends Model
         Product::observe(ProductObserver::class);
     }
 
+    public function adjust()
+    {
+        $price_diff = (rand(-5, 5) / 100) * $this->price;
+        $this->update([
+            'price' => $this->price + $price_diff,
+        ]);
+    }
+
     public function competitors()
     {
         return $this->hasMany(CompetitorPrice::class);
