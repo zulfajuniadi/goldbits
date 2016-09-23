@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -31,7 +31,7 @@
                                     {{$product->quantity}}
                                 </td>
                                 <td>
-                                    <b>RM {{$product->price}}</b>
+                                    <h5><b>RM {{$product->price}}</b></h5>
                                     <ul class="list-unstyled">
                                         @foreach($product->competitors as $competitor)
                                             <li>

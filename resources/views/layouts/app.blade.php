@@ -15,14 +15,14 @@
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
-    'csrfToken' => csrf_token(),
-]); ?>
+        window.Laravel = {{json_encode([
+            'csrfToken' => csrf_token(),
+        ])}}
     </script>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
