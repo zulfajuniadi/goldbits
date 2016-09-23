@@ -15,12 +15,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Expiry Date</th>
-                                <th>Average Weekly Sales</th>
-                                <th>Stock Quantity</th>
+                                <th>Stocks</th>
                                 <th>Current Price</th>
-                                <th>Low Price</th>
-                                <th>Mid Price</th>
-                                <th>High Price</th>
+                                <th>Thresholds</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -29,12 +26,28 @@
                             <tr>
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->expiry_date}}</td>
-                                <td>{{$product->weekly_sales}}</td>
-                                <td>{{$product->quantity}}</td>
-                                <td>{{$product->price}}</td>
-                                <td>{{$product->low_price}}</td>
-                                <td>{{$product->mid_price}}</td>
-                                <td>{{$product->high_price}}</td>
+                                <td>
+                                    {{$product->weekly_sales}} /
+                                    {{$product->quantity}}
+                                </td>
+                                <td>
+                                    <b>RM {{$product->price}}</b>
+                                    <ul class="list-unstyled">
+                                        @foreach($product->competitors as $competitor)
+                                            <li>
+                                                <img class="competitor-prices" src="{{$competitor->url}}" alt="placeholder+image">
+                                                RM {{$competitor->price}}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li>Low: RM {{$product->low_price}}</li>
+                                        <li>Mid: RM {{$product->mid_price}}</li>
+                                        <li>High: RM {{$product->high_price}}</li>
+                                    </ul>
+                                </td>
                                 <td>
                                     {!! Former::open_vertical(action('ProductsController@destroy', ['id' => $product->id])) !!}
                                         {!! Former::hidden('_method', 'delete') !!}

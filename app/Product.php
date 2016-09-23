@@ -26,5 +26,9 @@ class Product extends Model
     {
         Product::observe(ProductObserver::class);
     }
-    //
+
+    public function competitors()
+    {
+        return $this->hasMany(CompetitorPrice::class);
+    }
 }

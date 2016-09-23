@@ -15,16 +15,10 @@ class CreateCompetitorPricesTable extends Migration
     {
         Schema::create('competitor_prices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('competitor_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->string('url');
             $table->decimal('price', 10, 2);
             $table->timestamps();
-
-            $table->foreign('competitor_id')
-                ->references('id')
-                ->on('competitors')
-                ->onDelete('cascade');
 
             $table->foreign('product_id')
                 ->references('id')
