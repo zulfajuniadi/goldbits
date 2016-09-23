@@ -14,10 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', 'ProductsController@barcodes');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/products/{product}/flash-sales', 'ProductsController@flashSales');
+Route::get('/products/{product}/barcode', 'ProductsController@barcode');
+Route::get('/barcodes', 'ProductsController@barcodes');
 Route::resource('/products', 'ProductsController');
 Route::resource('/competitor-prices', 'CompetitorPricesController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use DNS2D;
 use Illuminate\Http\Request;
 use Twitter;
 
@@ -49,6 +50,13 @@ class ProductsController extends Controller
         return redirect(action('ProductsController@index'));
     }
 
+    public function show(Product $product)
+    {
+        $name = substr($product->name, 0, 8);
+        $product->barcode = DNS2D::getBarcodePNG("{$product->id};{$name};{$product->price};{$product->expiry_date}", "QRCODE", 10, 10);
+        return $product;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -90,6 +98,12 @@ class ProductsController extends Controller
         ]);
         Twitter::postTweet(['status' => 'Happy Belly Flash Sales! Today only RM' . number_format($product->price, 2) . ' for ' . $product->name . '! #awesomehb', 'format' => 'json']);
         return redirect(action('ProductsController@index'));
+    }
+
+    public function barcodes()
+    {
+        $products = Product::all();
+        return view('welcome', compact('products'));
     }
 
     /**
