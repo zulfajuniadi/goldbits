@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Twitter;
 
 class ProductsController extends Controller
 {
@@ -79,6 +80,15 @@ class ProductsController extends Controller
             'mid_price',
             'high_price',
         ]));
+        return redirect(action('ProductsController@index'));
+    }
+
+    public function flashSales(Request $request, Product $product)
+    {
+        $product->update([
+            'price' => $product->price * 0.7,
+        ]);
+        Twitter::postTweet(['status' => 'Happy Belly Flash Sales! Today only RM' . number_format($product->price, 2) . ' for ' . $product->name . '! #awesomehb', 'format' => 'json']);
         return redirect(action('ProductsController@index'));
     }
 

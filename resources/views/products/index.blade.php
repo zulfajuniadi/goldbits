@@ -35,8 +35,11 @@
                                     <ul class="list-unstyled">
                                         @foreach($product->competitors as $competitor)
                                             <li>
-                                                <img class="competitor-prices" src="{{$competitor->url}}" alt="placeholder+image">
-                                                RM {{$competitor->price}}
+                                                <a href="{{action('CompetitorPricesController@edit', ['id' => $competitor->id])}}">
+                                                    <i class="fa fa-edit"></i>
+                                                    <img class="competitor-prices" src="{{$competitor->url}}" alt="placeholder+image">
+                                                    RM {{$competitor->price}}
+                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -51,8 +54,9 @@
                                 <td>
                                     {!! Former::open_vertical(action('ProductsController@destroy', ['id' => $product->id])) !!}
                                         {!! Former::hidden('_method', 'delete') !!}
-                                        <a class="btn btn-primary" href="{{action('ProductsController@edit', ['id' => $product->id])}}">Update</a>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <a class="btn btn-block btn-sm btn-info" href="{{action('ProductsController@flashSales', ['id' => $product->id])}}">Flash</a>
+                                        <a class="btn btn-block btn-sm btn-primary" href="{{action('ProductsController@edit', ['id' => $product->id])}}">Update</a>
+                                        <button class="btn btn-block btn-sm btn-danger">Delete</button>
                                     {!! Former::close() !!}
                                 </td>
                             </tr>
